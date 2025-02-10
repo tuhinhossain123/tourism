@@ -144,7 +144,7 @@ const Navbar = () => {
             HOME
           </Link>
           <Link
-            to="/"
+            to="/about"
             className={`text-[16px] font-jost font-medium ${
               location.pathname === "/about"
                 ? "text-[#F9B233] underline"
