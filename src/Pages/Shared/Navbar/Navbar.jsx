@@ -103,7 +103,7 @@ const Navbar = () => {
               SHOP
             </Link>
             <Link
-              to="/contact"
+              to="/work"
               className={`text-[16px] font-jost font-medium ${
                 location.pathname === "/work"
                   ? "text-[#F9B233] underline"
@@ -184,7 +184,7 @@ const Navbar = () => {
             SHOP
           </Link>
           <Link
-            to="/contact"
+            to="/work"
             className={`text-[16px] font-jost font-medium ${
               location.pathname === "/work"
                 ? "text-[#F9B233] underline"
