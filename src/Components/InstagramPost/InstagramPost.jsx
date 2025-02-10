@@ -4,8 +4,8 @@ import img from "../../assets/images/populer5.jpg";
 
 const InstagramPost = () => {
   return (
-    <div className="lg:mt-[90px]">
-      <div className="max-w-[1680px] mx-auto px-6 lg:px-8 pt-16 lg:pt-[90px] pb-12">
+    <div className="mt-10 lg:mt-[90px]">
+      <div className="max-w-[1680px] mx-auto px-6 lg:px-8  pb-12">
         <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4 md:gap-0">
           <div>
             <h2 className="text-3xl md:text-4xl lg:text-[42px] font-jost font-semibold text-primary pb-4 lg:pb-6">

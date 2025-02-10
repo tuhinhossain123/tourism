@@ -7,7 +7,7 @@ import img5 from "../../assets/images/Screenshot (134).png";
 const Galurray = () => {
   return (
     <div className="bg-[#F9FAFB] mt-10 lg:mt-[90px]">
-      <div className="max-w-[1680px] mx-auto px-6 lg:px-8 py-16 lg:py-[90px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px]">
+      <div className="max-w-[1680px] mx-auto px-6 lg:px-8 py-16 lg:py-[90px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] rounded-sm">
         <div className="bg-[#F3F4F6] flex flex-col justify-center items-center">
           <h2 className="text-[42px] font-jost font-semibold text-primary pb-4">
             Work With Us
