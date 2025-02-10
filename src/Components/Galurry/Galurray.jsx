@@ -3,7 +3,6 @@ import img2 from "../../assets/images/Screenshot (138).png";
 import img3 from "../../assets/images/Screenshot (136).png";
 import img4 from "../../assets/images/Screenshot (135).png";
 import img5 from "../../assets/images/Screenshot (134).png";
-
 import { IoArrowForwardSharp } from "react-icons/io5";
 
 const Galurray = () => {
