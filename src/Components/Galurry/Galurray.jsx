@@ -4,6 +4,8 @@ import img3 from "../../assets/images/Screenshot (136).png";
 import img4 from "../../assets/images/Screenshot (135).png";
 import img5 from "../../assets/images/Screenshot (134).png";
 
+import { IoArrowForwardSharp } from "react-icons/io5";
+
 const Galurray = () => {
   return (
     <div className="bg-[#F9FAFB] mt-10 lg:mt-[90px]">
@@ -13,8 +15,8 @@ const Galurray = () => {
             Work With Us
           </h2>
 
-          <button className="text-2xl font-jost font-medium text-[#47545F] border-2 border-[#47545F] py-3 px-6">
-            Contact Me
+          <button className="text-2xl font-jost font-medium text-[#47545F] border-2 border-[#47545F] py-3 px-6 flex items-center gap-3">
+            Contact Me <IoArrowForwardSharp></IoArrowForwardSharp>
           </button>
         </div>
         <div>

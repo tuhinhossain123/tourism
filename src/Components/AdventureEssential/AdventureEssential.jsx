@@ -27,7 +27,7 @@ const AdventureEssential = () => {
               <img src={img2} alt="" className="w-full lg:w-[397px] lg:h-[390px] object-cover" />
             </div>
             <h3 className="text-[#47545F] text-[22px] font-jost font-normal pt-3">
-              Walking Poles
+              Water Bottle
             </h3>
             <h3 className="text-[#8899A8] text-[22px] font-jost font-medium pt-2">
               $43.00 - $98.00
@@ -38,7 +38,7 @@ const AdventureEssential = () => {
               <img src={img3} alt="" className="w-full lg:w-[397px] lg:h-[390px] object-cover" />
             </div>
             <h3 className="text-[#47545F] text-[22px] font-jost font-normal pt-3">
-              Walking Poles
+              Fast Aid Kit
             </h3>
             <h3 className="text-[#8899A8] text-[22px] font-jost font-medium pt-2">
               $43.00 - $98.00
@@ -49,7 +49,7 @@ const AdventureEssential = () => {
               <img src={img4} alt="" className="w-full lg:w-[397px] lg:h-[390px] object-cover" />
             </div>
             <h3 className="text-[#47545F] text-[22px] font-jost font-normal pt-3">
-              Walking Poles
+              Backpacks
             </h3>
             <h3 className="text-[#8899A8] text-[22px] font-jost font-medium pt-2">
               $43.00 - $98.00
