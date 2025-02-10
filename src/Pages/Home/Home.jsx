@@ -1,9 +1,10 @@
+import InstagramPost from "../../Components/InstagramPost/InstagramPost";
 
 
 const Home = () => {
     return (
         <div>
-            <h2>Thia</h2>
+            <InstagramPost></InstagramPost>
         </div>
     );
 };
