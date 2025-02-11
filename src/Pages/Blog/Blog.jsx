@@ -1,5 +1,6 @@
 import BlogLatestPost from "../../Components/BlogLatestPost/BlogLatestPost";
 import BlogShare from "../../Components/BlogShare/BlogShare";
+import Subscribe from "../../Components/Subscribe/Subscribe";
 
 const Blog = () => {
   return (
@@ -15,6 +16,7 @@ const Blog = () => {
         <BlogShare></BlogShare>
       </div>
       <BlogLatestPost></BlogLatestPost>
+      <Subscribe></Subscribe>
     </div>
   );
 };
