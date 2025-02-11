@@ -1,10 +1,11 @@
-import { createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import Home from "../Pages/Home/Home";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Blog from "../Pages/Blog/Blog";
 import Connect from "../Pages/Connect/Connect";
 import WorkUs from "../Pages/WorkUs/WorkUs";
+import GroupHikes from "../Pages/GroupHikes/GroupHikes";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -23,12 +24,16 @@ export const router = createBrowserRouter([
         element: <Blog></Blog>,
       },
       {
-        path: "/connect",
-        element: <Connect></Connect>,
+        path: "/hike",
+        element: <GroupHikes></GroupHikes>,
       },
       {
         path: "/work",
-        element: <WorkUs></WorkUs>
+        element: <WorkUs></WorkUs>,
+      },
+      {
+        path: "/connect",
+        element: <Connect></Connect>,
       },
     ],
   },

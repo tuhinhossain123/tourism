@@ -8,10 +8,10 @@ const Banner = () => {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <div className="absolute inset-0 bg-[#4c4b4b14] bg-opacity-60"></div>
 
-      <div className="absolute z-10 pl-[25%] top-0">
-        <h1 className="text-[#01272d7d] text-2xl md:text-4xl lg:text-[52px] font-jost font-bold lg:leading-[1.1] text-center">
+      <div className="absolute z-10 pl-[25%] top-0 pt-40">
+        <h1 className="text-primary text-2xl md:text-4xl lg:text-[52px] font-jost font-bold lg:leading-[1.1] text-center">
           Helping you get outside and <br /> create epic memories with your kids
         </h1>
         <p className="text-[#1F2A37] font-jost font-medium pt-3 text-center text-[24px]">

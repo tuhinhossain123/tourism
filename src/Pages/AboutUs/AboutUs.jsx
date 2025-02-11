@@ -2,7 +2,7 @@ import { IoArrowForwardSharp } from "react-icons/io5";
 import aboutImg from "../../assets/images/about.png";
 const AboutUs = () => {
   return (
-    <div className="mt-6 lg:mt-9">
+    <div className="mt-6  pt-40">
       <div className="max-w-[1680px] mx-auto px-6 lg:px-8">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-8">
           <div className="w-full lg:w-[50%]">
