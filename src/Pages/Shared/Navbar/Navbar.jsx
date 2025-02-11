@@ -13,11 +13,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScroll(true);
-      } else {
-        setScroll(false);
-      }
+      setScroll(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -26,45 +22,50 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleCloseMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav
-      className={`w-full fixed top-0  transition-all duration-300 ${
+      className={`w-full fixed top-0 transition-all duration-300 ${
         scroll ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="max-w-[1680px] mx-auto px-6 lg:px-8">
-        {/* nav top */}
+        {/* Top Navigation */}
         <div className="flex justify-between items-center">
-          <div className="flex justify-evenly md:justify-between items-center gap-8 lg:gap-0 w-[70%] md:w-[80%] lg:w-[90%]  pt-5 pb-5 pr-4 md:pr-0">
+          <div className="flex justify-evenly md:justify-between items-center gap-8 lg:gap-0 w-[70%] md:w-[80%] lg:w-[90%] pt-5 pb-5 pr-4 md:pr-0">
             <div>
               <Link className="text-primary font-jost font-medium text-[14px]">
                 FOLLOW US
               </Link>
             </div>
             <div className="flex items-center gap-4">
-              <Link>
+              <Link to="#">
                 <FaTwitter className="text-[21px] text-primary" />
               </Link>
-              <Link>
+              <Link to="#">
                 <FaInstagram className="text-[21px] text-primary" />
               </Link>
-              <Link>
+              <Link to="#">
                 <FaYoutube className="text-[21px] text-primary" />
               </Link>
             </div>
           </div>
           <h2 className="border-r-[2px] h-16 border-[#47545F]" />
-          <div className="w-[30%] md:w-[10%] lg:w-[5%]  pt-5 pb-5">
+          <div className="w-[30%] md:w-[10%] lg:w-[5%] pt-5 pb-5">
             <Link className="flex justify-end items-center gap-3 text-primary font-jost font-medium">
               <BsCart3 className="text-xl font-bold" />
-              <span className=" text-[16px] ">CART</span>
+              <span className="text-[16px]">CART</span>
             </Link>
           </div>
         </div>
 
-        {/* hr */}
-        <hr className="border-t-[2px] border-[#47545F] mt- mb-4 lg:mb-5 " />
+        {/* Divider */}
+        <hr className="border-t-[2px] border-[#47545F] mt- mb-4 lg:mb-5" />
 
+        {/* Main Navigation */}
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold">
@@ -115,7 +116,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Device */}
+      {/* Mobile Navigation Menu */}
       {isOpen && (
         <div className="lg:hidden flex flex-col items-center py-8 space-y-4 bg-white shadow-md">
           {[
@@ -134,11 +135,15 @@ const Navbar = () => {
                   ? "text-[#F9B233] underline"
                   : "text-primary"
               }`}
+              onClick={handleCloseMenu} // Close the menu when a link is clicked
             >
               {item.label}
             </Link>
           ))}
-          <button className="border-2 border-primary text-primary font-jost font-medium text-[16px] px-6 py-3 rounded-sm uppercase hover:bg-primary hover:text-white transition">
+          <button
+            className="border-2 border-primary text-primary font-jost font-medium text-[16px] px-6 py-3 rounded-sm uppercase hover:bg-primary hover:text-white transition"
+            onClick={handleCloseMenu} // Also close when clicking Contact Us
+          >
             Contact Us
           </button>
         </div>
