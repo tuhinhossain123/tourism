@@ -28,13 +28,13 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full fixed top-0 pt-5 transition-all duration-300 ${
+      className={`w-full fixed top-0  transition-all duration-300 ${
         scroll ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="max-w-[1680px] mx-auto px-6 lg:px-6">
-        <div className="flex justify-between">
-          <div className="flex lg:justify-between items-center gap-8 lg:gap-0 w-[90%]">
+        <div className="flex justify-between items-center">
+          <div className="flex justify-evenly md:justify-between items-center gap-8 lg:gap-0 w-[70%] md:w-[80%] lg:w-[90%]  pt-5 pb-5">
             <div>
               <Link className="text-primary font-jost font-medium text-[14px]">
                 FOLLOW US
@@ -52,20 +52,20 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-
-          <div className="w-[10%]">
-            <Link className="flex justify-end items-center gap-2 text-primary text-[14px] font-jost font-medium">
-              <BsCart3 className="text-lg font-bold" />
-              <span className="hidden md:block">CART</span>
+          <h2 className="border-r-[2px] h-16 border-[#47545F]" />
+          <div className="w-[30%] md:w-[10%] lg:w-[5%]  pt-5 pb-5">
+            <Link className="flex justify-end items-center gap-3 text-primary font-jost font-medium">
+              <BsCart3 className="text-xl font-bold" />
+              <span className=" text-[16px] ">CART</span>
             </Link>
           </div>
         </div>
-        <hr className="border-t-[2px] border-[#47545F] mt-5 mb-4 lg:mb-5" />
+        <hr className="border-t-[2px] border-[#47545F] mt- mb-4 lg:mb-5 " />
 
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold">
-            <img src={logo} alt="Logo" className="w-[110px] h-[70px]" />
+            <img src={logo} alt="Logo" className="w-full md:w-[100px] lg:w-[110px] h-full md:h-[60px] lg:h-[70px]" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -102,7 +102,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
             <button onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <RxCross2 size={28} /> : <IoIosMenu size={28} />}
+              {isOpen ? <RxCross2 size={35} /> : <IoIosMenu size={35} />}
             </button>
           </div>
         </div>
