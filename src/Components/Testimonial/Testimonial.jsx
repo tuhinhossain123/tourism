@@ -28,12 +28,11 @@ const testimonials = [
 
 const TestimonialSlider = () => {
   return (
-    <div className="">
-      {/* Header */}
+    <div className="my-10 lg:my-16">
       <h2 className="text-center text-[42px] font-jost font-semibold text-primary pb-2">
         Testimonials
       </h2>
-      <p className="text-center text-[#47545F] text-[16px] font-jost font-medium mb-11">
+      <p className="text-center text-[#47545F] text-[16px] font-jost font-medium pb-8 lg:pb-11">
         Here's what previous partners are saying
       </p>
 
