@@ -1,7 +1,7 @@
 import connect from "../../assets/images/Screenshot (141).png";
 const Connect = () => {
   return (
-    <div className="my-10 lg:my-[108px]">
+    <div className="pt-40  lg:pt-60">
       <div className="max-w-[1680px] mx-auto px-6 lg:px-8 flex flex-col lg:flex-row justify-between gap-11">
         <div className="w-full lg:w-[50%]">
           <img

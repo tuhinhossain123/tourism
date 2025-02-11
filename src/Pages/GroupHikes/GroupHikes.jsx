@@ -3,7 +3,7 @@ import GroupHikBanner from "../../Components/GroupsHikeBanner/GroupHikBanner";
 
 const GroupHikes = () => {
     return (
-        <div className="mt-11">
+        <div className="pt-36  lg:pt-44">
            <GroupHikBanner></GroupHikBanner>
         </div>
     );

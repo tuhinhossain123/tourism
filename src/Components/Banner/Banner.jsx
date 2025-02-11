@@ -10,12 +10,13 @@ const Banner = () => {
 
       <div className="absolute inset-0 bg-[#4c4b4b14] bg-opacity-60"></div>
 
-      <div className="absolute z-10 pl-[25%] top-0 pt-40">
-        <h1 className="text-primary text-2xl md:text-4xl lg:text-[52px] font-jost font-bold lg:leading-[1.1] text-center">
-          Helping you get outside and <br /> create epic memories with your kids
+      <div className="absolute z-10 lg:pl-[25%] top-0 pt-40">
+        <h1 className="text-primary text-3xl md:text-4xl lg:text-[52px] font-jost font-bold lg:leading-[1.1] text-center">
+          Helping you get outside and <br className="hidden lg:block" /> create
+          epic memories with your kids
         </h1>
-        <p className="text-[#1F2A37] font-jost font-medium pt-3 text-center text-[24px]">
-          Your solo mom adventure guid to the best adventures in <br /> virgina
+        <p className="text-[#1F2A37] font-jost font-medium pt-3 text-center text-lg lg:text-[24px]">
+          Your solo mom adventure guid to the best adventures in <br className="hidden lg:block" />virgina
           and the East Cost
         </p>
       </div>

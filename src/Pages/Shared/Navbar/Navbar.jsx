@@ -33,8 +33,9 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-[1680px] mx-auto px-6 lg:px-6">
+        {/* nav top */}
         <div className="flex justify-between items-center">
-          <div className="flex justify-evenly md:justify-between items-center gap-8 lg:gap-0 w-[70%] md:w-[80%] lg:w-[90%]  pt-5 pb-5">
+          <div className="flex justify-evenly md:justify-between items-center gap-8 lg:gap-0 w-[70%] md:w-[80%] lg:w-[90%]  pt-5 pb-5 pr-4 md:pr-0">
             <div>
               <Link className="text-primary font-jost font-medium text-[14px]">
                 FOLLOW US
@@ -60,12 +61,18 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
+
+        {/* hr */}
         <hr className="border-t-[2px] border-[#47545F] mt- mb-4 lg:mb-5 " />
 
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold">
-            <img src={logo} alt="Logo" className="w-full md:w-[100px] lg:w-[110px] h-full md:h-[60px] lg:h-[70px]" />
+            <img
+              src={logo}
+              alt="Logo"
+              className="w-full md:w-[100px] lg:w-[110px] h-full md:h-[60px] lg:h-[70px]"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -108,9 +115,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Device */}
       {isOpen && (
-        <div className="lg:hidden flex flex-col items-center py-5 space-y-4 bg-white shadow-md">
+        <div className="lg:hidden flex flex-col items-center py-8 space-y-4 bg-white shadow-md">
           {[
             { path: "/", label: "HOME" },
             { path: "/about", label: "ABOUT ME" },
