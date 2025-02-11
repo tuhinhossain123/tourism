@@ -56,7 +56,7 @@ const AboutUs = () => {
         </div>
 
         <div className="flex justify-center">
-          <button className="text-[14px] md:text-2xl font-jost font-medium text-primary border-2 border-primary py-3 px-4 md:px-6 flex justify-center items-center gap-3 my-8 md:my-16">
+          <button className="text-[14px] md:text-2xl font-jost font-medium text-primary border-2 border-primary py-3 px-4 md:px-6 flex justify-center items-center gap-3 my-8 md:my-16 hover:bg-primary hover:text-white transition">
             Create Your Own Epic Adventure Today!{" "}
             <IoArrowForwardSharp></IoArrowForwardSharp>
           </button>

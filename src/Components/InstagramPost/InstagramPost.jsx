@@ -14,7 +14,7 @@ const InstagramPost = () => {
             <h3 className="text-2xl font-jost font-normal">187 posts</h3>
           </div>
           <div>
-            <button className="text-[16px] text-primary font-jost font-medium py-3 px-6 border-2 border-primary">
+            <button className="text-[16px] text-primary font-jost font-medium py-3 px-6 border-2 border-primary hover:bg-primary hover:text-white transition">
               Follow Us
             </button>
           </div>

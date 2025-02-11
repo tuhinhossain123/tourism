@@ -14,7 +14,7 @@ const Galurray = () => {
             Work With Us
           </h2>
 
-          <button className="text-2xl font-jost font-medium text-[#47545F] border-2 border-[#47545F] py-3 px-6 flex items-center gap-3">
+          <button className="text-2xl font-jost font-medium text-[#47545F] border-2 border-[#47545F] py-3 px-6 flex items-center gap-3 hover:bg-primary hover:text-white transition">
             Contact Me <IoArrowForwardSharp></IoArrowForwardSharp>
           </button>
         </div>
