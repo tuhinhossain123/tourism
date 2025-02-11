@@ -1,3 +1,4 @@
+import BlogLatestPost from "../../Components/BlogLatestPost/BlogLatestPost";
 import BlogShare from "../../Components/BlogShare/BlogShare";
 
 const Blog = () => {
@@ -13,6 +14,7 @@ const Blog = () => {
         </h3>
         <BlogShare></BlogShare>
       </div>
+      <BlogLatestPost></BlogLatestPost>
     </div>
   );
 };
