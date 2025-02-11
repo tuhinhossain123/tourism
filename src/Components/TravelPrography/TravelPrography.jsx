@@ -2,8 +2,8 @@ import img1 from "../../assets/images/BImg1.png";
 import { IoArrowForwardSharp } from "react-icons/io5";
 const TravelPrography = () => {
   return (
-    <div className="">
-      <div>
+    <div className="pt-32 lg:pt-40">
+      <div className="max-w-[1680px] mx-auto px-6 lg:px-8">
         <h2 className="text-center text-3xl lg:text-[48px] font-jost font-bold text-primary pb-4">
           Travel Photography & UGC Creator
         </h2>
@@ -46,8 +46,8 @@ const TravelPrography = () => {
               #02
             </h1>
             <div className="pl-8 lg:pl-16">
-              <h2 className="text-primary font-jost font-semibold text-3xl lg:text-4xl pb-4">
-                Brand Collaborations and User <br /> Generated Content
+              <h2 className="text-primary font-jost font-semibold text-2xl lg:text-4xl pb-4">
+                Brand Collaborations and User <br className="hidden lg:block"/> Generated Content
               </h2>
               <p className="text-[16px] text-[#47545F] font-jost font-normal text-justify">
                 Shaneice secializes in creating authentic ecpriences that feel

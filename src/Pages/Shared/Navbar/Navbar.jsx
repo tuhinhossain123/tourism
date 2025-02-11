@@ -32,7 +32,7 @@ const Navbar = () => {
         scroll ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1680px] mx-auto px-6 lg:px-6">
+      <div className="max-w-[1680px] mx-auto px-6 lg:px-8">
         {/* nav top */}
         <div className="flex justify-between items-center">
           <div className="flex justify-evenly md:justify-between items-center gap-8 lg:gap-0 w-[70%] md:w-[80%] lg:w-[90%]  pt-5 pb-5 pr-4 md:pr-0">

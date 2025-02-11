@@ -6,7 +6,7 @@ import { FaYoutube } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className="bg-[#F3F4F6] mt-10 lg:mt-[90px]">
-      <div className="max-w-[1680px] mx-auto px-8 pt-16 lg:pt-[90px] pb-12">
+      <div className="max-w-[1680px] mx-auto px-6 lg:px-8 pt-16 lg:pt-[90px] pb-12">
         <div className="flex flex-col md:flex-row gap-10 md:gap-20 lg:gap-36">
           <div>
             <h2 className="text-3xl md:text-4xl lg:text-[42px] font-jost font-semibold text-primary pb-6">
