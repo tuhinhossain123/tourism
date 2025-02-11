@@ -3,7 +3,7 @@ import { IoArrowForwardSharp } from "react-icons/io5";
 const TravelPrography = () => {
   return (
     <div className="pt-32 lg:pt-40">
-      <div className="max-w-[1680px] mx-auto px-6 lg:px-8">
+      <div>
         <h2 className="text-center text-3xl lg:text-[48px] font-jost font-bold text-primary pb-4">
           Travel Photography & UGC Creator
         </h2>
@@ -27,7 +27,7 @@ const TravelPrography = () => {
                 product, she prides herself in capturing authentic momets in
                 epic destinations - making moms think "I want that too!
               </p>
-              <button className="text-[16px] font-jost font-medium text-primary border-2 border-primary flex justify-center items-center gap-2 py-2 px-6 mt-7">
+              <button className="text-[16px] font-jost font-medium text-primary border-2 border-primary flex justify-center items-center gap-2 py-2 px-6 mt-7 hover:bg-primary hover:text-white transition">
                 View Protfolio <IoArrowForwardSharp></IoArrowForwardSharp>
               </button>
             </div>
@@ -63,7 +63,7 @@ const TravelPrography = () => {
                 Gradens,River RidersAdventure Resort, Dam Tough Vermont, Re! and
                 mone.
               </p>
-              <button className="text-[16px] font-jost font-medium text-primary border-2 border-primary flex justify-center items-center gap-2 py-2 px-6 mt-7">
+              <button className="text-[16px] font-jost font-medium text-primary border-2 border-primary flex justify-center items-center gap-2 py-2 px-6 mt-7 hover:bg-primary hover:text-white transition">
                 View My Protfolio <IoArrowForwardSharp></IoArrowForwardSharp>
               </button>
             </div>

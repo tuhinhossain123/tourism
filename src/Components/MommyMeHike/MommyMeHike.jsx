@@ -21,7 +21,7 @@ const MommyMeHike = () => {
               Most importantly, this is a community building activly where your
               kids will start as strangers and leave as bestis!
             </p>
-            <button className="text-[16px] font-jost font-medium text-primary border-2 border-primary flex justify-center items-center gap-2 py-2 px-6">
+            <button className="text-[16px] font-jost font-medium text-primary border-2 border-primary flex justify-center items-center gap-2 py-2 px-6 hover:bg-primary hover:text-white transition">
               Hike With Us! <IoArrowForwardSharp></IoArrowForwardSharp>
             </button>
           </div>

@@ -101,7 +101,7 @@ const Navbar = () => {
 
           {/* Contact Button */}
           <div className="hidden lg:block">
-            <button className="border-2 border-primary text-primary font-jost font-medium text-[16px] px-6 py-3 rounded-sm uppercase">
+            <button className="border-2 border-primary text-primary font-jost font-medium text-[16px] px-6 py-3 rounded-sm uppercase hover:bg-primary hover:text-white transition">
               Contact Us
             </button>
           </div>
@@ -138,7 +138,7 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          <button className="border-2 border-primary text-primary font-jost font-medium text-[16px] px-6 py-3 rounded-sm uppercase">
+          <button className="border-2 border-primary text-primary font-jost font-medium text-[16px] px-6 py-3 rounded-sm uppercase hover:bg-primary hover:text-white transition">
             Contact Us
           </button>
         </div>

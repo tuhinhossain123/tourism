@@ -7,7 +7,7 @@ const GroupHikes = () => {
   return (
     <div className="pt-36  lg:pt-44">
       <GroupHikBanner></GroupHikBanner>
-      <div className="max-w-[1680px] mx-auto px-6 lg:px-8">
+      <div className="max-w-[1680px] mx-auto">
         <MommyMeHike></MommyMeHike>
         <GroupHikeGularry></GroupHikeGularry>
         <TestimonialSlider></TestimonialSlider>

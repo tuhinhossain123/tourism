@@ -17,7 +17,7 @@ const GroupHikBanner = () => {
           <br className="hidden lg:block" /> get outside with your kids and
           create <br className="lg:block hidden" /> some new memories in nature
         </h1>
-        <button className="mt-4 px-6 py-3 border text-[16px] font-jost font-normal border-[#FFFFFF] text-[#FFFFFF] rounded-sm flex items-center gap-2 transition">
+        <button className="mt-4 px-6 py-3 border text-[16px] font-jost font-normal border-[#FFFFFF] text-[#FFFFFF] rounded-sm flex items-center gap-2 transition hover:bg-primary  hover:text-white hover:border-primary">
           Join Our Next Hike <IoArrowForwardSharp />
         </button>
       </div>
