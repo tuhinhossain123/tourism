@@ -12,7 +12,7 @@ const Signup = () => {
   //   } = useForm();
 
   return (
-    <div className="mt-48 lg:mt-56 max-w-[1680px] mx-auto flex justify-center px-6 lg:px-8">
+    <div className="mt-48 lg:mt-56 max-w-[1680px] flex justify-center px-6 lg:px-8">
       <div className="w-full lg:w-[30%]">
         <h2 className="text-3xl font-semibold pb-12">
           Sign Up to <span className="text-primary"> Tourism Site</span>
@@ -95,7 +95,7 @@ const Signup = () => {
           <div className="pt-4">
             <p className="">
               <span className="font-medium text-[16px]"> Already have an account? Go to</span>
-              <Link href={"/singin"} className=" text-red-600 underline pl-2 font-semibold text-lg">
+              <Link to="/signin" className=" text-red-600 underline pl-2 font-semibold text-lg">
                 Sign In
               </Link>
             </p>

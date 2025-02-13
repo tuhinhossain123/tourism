@@ -8,6 +8,7 @@ import WorkUs from "../Pages/WorkUs/WorkUs";
 import GroupHikes from "../Pages/GroupHikes/GroupHikes";
 import Shop from "../Pages/Shop/Shop";
 import Signup from "../Pages/Authentication/Signup/Signup";
+import Signin from "../Pages/Authentication/Signin/Signin";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup></Signup>,
+      },
+      {
+        path: "/signin",
+        element: <Signin></Signin>,
       },
     ],
   },
