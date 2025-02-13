@@ -7,6 +7,7 @@ import Connect from "../Pages/Connect/Connect";
 import WorkUs from "../Pages/WorkUs/WorkUs";
 import GroupHikes from "../Pages/GroupHikes/GroupHikes";
 import Shop from "../Pages/Shop/Shop";
+import Signup from "../Pages/Authentication/Signup/Signup";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "/connect",
         element: <Connect></Connect>,
+      },
+      {
+        path: "/signup",
+        element: <Signup></Signup>,
       },
     ],
   },
