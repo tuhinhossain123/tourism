@@ -1,53 +1,125 @@
 import { FcGoogle } from "react-icons/fc";
-// import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 // import toast from "react-hot-toast";
+// import { useContext } from "react";
+// import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Signin = () => {
   //   const { singIn, singInWithGoogle } = useContext(AuthContext);
+  //   const navigate = useNavigate();
 
-  //   const {
-  //     register,
-  //     handleSubmit,
-  //     formState: { errors },
-  //   } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  //   const onSubmit = (data) => {
-  //     singIn(data.email, data.password).then((result) => {
-  //       // const user = result.user;
-  //       toast.success("User Logged In Successfully !!");
-  //       router.push("/");
-  //     });
-  //   };
+  //   const handleLogin = (e) => {
+  //     e.preventDefault();
+  //     const email = e.target.email.value;
+  //     const password = e.target.password.value;
 
-  //   const handleWithGoogle = () => {
-  //     singInWithGoogle()
+  //     singIn(email, password)
   //       .then((result) => {
-  //         const userInfo = {
-  //           email: result.user.email,
-  //           name: result.user.displayName,
-  //           photo: result.user.photoURL,
-  //           roll: "user",
-  //         };
-  //         axiosSecure.post("/users", userInfo).then((res) => {
-  //           toast.success("Logged In Successful with Google!");
-  //           router.push("/");
-  //         });
+  //         const user = result.user;
+  //         console.log(user);
+  //         // toast.success("Logged In Successful!", result.user);
+  //         // e.target.reset();
+  //         // navigate("/");
   //       })
   //       .catch((error) => {
   //         console.error(error);
+  //         // setError(error.message);
   //       });
   //   };
 
   return (
-    <div>
-      <div className="mt-48 lg:mt-56 max-w-[1680px] flex justify-center px-6 lg:px-8">
-        <div className="w-full lg:w-[30%]">
-          <h2 className="text-3xl font-semibold pb-12">
-            Sign In to <span className="text-primary"> Tourism Site</span>
+    <div className="my-48 lg:mt-[280px]">
+      <div className="flex flex-col lg:flex-row justify-center  max-w-[1680px] mx-auto  px-6 lg:px-8">
+        <div className="hidden lg:block lg:w-[70%] lg:pl-28">
+          <h2 className="text-3xl md:text-4xl lg:text-[60px] font-jost font-medium  pb-4 lg:pb-6 lg:leading-[1.1]">
+            The trip of your dreams <br /> starts with{" "}
+            <span className="text-primary">Kaylashae_Adventures</span>
           </h2>
-          <form>
-            <div className="pb-8">
+          <h3 className="text-2xl text-[#47545F] font-jost font-normal">
+            Covering hundreds of destinations and countless experiences,
+            <br />
+            Kaylashae_Adventures is your guide for traveling better and smarter.
+          </h3>
+        </div>
+        <div className="w-full lg:w-[30%]">
+          <h2 className="text-3xl font-jost font-medium pb-8 lg:pb-12 lg:leading-[1.1]">
+            Welcome To <br />
+            <span className="text-primary"> Kaylashae_Adventures</span>
+          </h2>
+          <form onSubmit={handleSubmit()}>
+            <div className="pb-6">
+              <button
+                // onClick={handleWithGoogle}
+                className="btn w-full py-3  font-semibold  text-lg flex justify-center items-center gap-4 border-2 rounded-full text-black"
+              >
+                <span>
+                  <FcGoogle className="text-2xl"></FcGoogle>
+                </span>
+                <span>Continue With Google</span>
+              </button>
+            </div>
+            <h3 className="text-center"> OR </h3>
+            <div className="form-control pt-2 lg:pt-5  pb-6 md:pb-8">
+              <h5 className="font-medium font-jost text-black text-lg pb-3 md:pb-2">
+                Email <span className="text-primary text-[1.5rem]">*</span>
+              </h5>
+              <input
+                type="email"
+                {...register("email", { required: true })}
+                className="input bg-gray-100 border-2 text-lg w-full p-3 focus:outline-none"
+              />
+              {errors.email && (
+                <span className="text-red-600 font-jost font-normal">
+                  email is required
+                </span>
+              )}
+            </div>
+
+            <div className="form-control ">
+              <div className="">
+                <h5 className="font-semibold text-black text-lg pb-3 md:pb-2">
+                  Password{" "}
+                  <span className="text-primary text-[1.5rem] pl-1">*</span>
+                </h5>
+                <input
+                  type="password"
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    maxLength: 20,
+                  })}
+                  className="input bg-gray-100 border-2  text-lg w-full p-3 focus:outline-none"
+                />
+                {errors.password?.type === "required" && (
+                  <span className="text-red-600 font-jost font-normal">
+                    password is required
+                  </span>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <span className="text-red-600 font-normal">
+                    Password must be 6 characters
+                  </span>
+                )}
+                {errors.password?.type === "maxLength" && (
+                  <span className="text-red-600 font-normal">
+                    Password must be less then 20 characters
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="form-control mt-8">
+              <button className="btn w-full py-3 px-2 font-semibold rounded-md text-lg bg-primary  text-white">
+                Sign In
+              </button>
+            </div>
+            <div className="pt-4">
               <p className=" ">
                 <span className="font-medium text-[16px]">
                   {" "}
@@ -60,75 +132,6 @@ const Signin = () => {
                   Create One
                 </Link>
               </p>
-            </div>
-            <div className="form-control  pb-6 md:pb-10">
-              <h5 className="font-semibold text-black text-lg pb-3 md:pb-4">
-                Email <span className="text-primary text-[1.5rem] pl-1">*</span>
-              </h5>
-              <input
-                type="email"
-                name="email"
-                // {...register("email", { required: true })}
-                className="input bg-gray-100 border-2   text-lg w-full p-3 focus:outline-none"
-              />
-              {/* {errors.email && (
-                <span className="text-primary font-medium">
-                  email is required
-                </span>
-              )} */}
-            </div>
-            <div className="form-control ">
-              <div className="">
-                <h5 className="font-semibold text-black text-lg pb-3 md:pb-4">
-                  Password{" "}
-                  <span className="text-primary text-[1.5rem] pl-1">*</span>
-                </h5>
-                <input
-                  type="password"
-                  name="password"
-                  //   {...register("password", {
-                  //     required: true,
-                  //     minLength: 6,
-                  //     maxLength: 20,
-                  //     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
-                  //   })}
-                  className="input bg-gray-100 border-2   text-lg w-full p-3 focus:outline-none"
-                />
-                {/* {errors.password?.type === "required" && (
-                  <span className="text-primary font-medium">
-                    password is required
-                  </span>
-                )}
-                {errors.password?.type === "minLength" && (
-                  <span className="text-primary font-medium">
-                    Password must be 6 characters
-                  </span>
-                )}
-                {errors.password?.type === "maxLength" && (
-                  <span className="text-primary font-medium">
-                    Password must be less then 20 characters
-                  </span>
-                )}
-                {errors.password?.type === "pattern" && (
-                  <span className="text-primary font-medium">
-                    Password must have one Uppercase one lower case, one number
-                    and one special character.
-                  </span>
-                )} */}
-              </div>
-            </div>
-            <div className="form-control mt-8">
-              <button className="btn w-full py-2 px-2 font-semibold rounded-md text-lg bg-primary hover:bg-secondary text-white">
-                Sign In
-              </button>
-            </div>
-            <div className="pt-6 md:pt-8">
-              <button
-                // onClick={handleWithGoogle}
-                className="btn w-full py-2 px-2 flex justify-center items-center gap-3 font-semibold rounded-md  bg-black text-white"
-              >
-                <FcGoogle className="text-2xl"></FcGoogle>
-              </button>
             </div>
           </form>
         </div>
