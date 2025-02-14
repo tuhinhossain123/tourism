@@ -66,7 +66,7 @@ const Navbar = () => {
         <hr className="border-t-[2px] border-[#47545F] mt- mb-4 lg:mb-5" />
 
         {/* Main Navigation */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center pb-3">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold">
             <img
@@ -101,17 +101,39 @@ const Navbar = () => {
           </div>
 
           {/* Contact Button */}
-          <div className="hidden lg:block">
-            <button className="border-2 border-primary text-primary font-jost font-medium text-[16px] px-6 py-3 rounded-sm uppercase hover:bg-primary hover:text-white transition">
-              Contact Us
-            </button>
+          <div className="flex items-center gap-10">
+            <div className="hidden lg:block">
+              <button className="border-2 border-primary text-primary font-jost font-medium text-[16px] px-6 py-3 rounded-sm uppercase hover:bg-primary hover:text-white transition">
+                Contact Us
+              </button>
+            </div>
+
+            <div className="hidden lg:block">
+              <Link
+                to="/signin"
+                className="border-2  border-primary rounded-full py-3 px-6 bg-primary text-[16px] text-white font-jost font-normal uppercase"
+              >
+                Sign In
+              </Link>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <RxCross2 size={35} /> : <IoIosMenu size={35} />}
-            </button>
+          <div className="flex items-center gap-10 lg:hidden">
+            <div className="">
+              <button onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? <RxCross2 size={35} /> : <IoIosMenu size={35} />}
+              </button>
+            </div>
+
+            <div>
+              <Link
+                to="/signin"
+                className="border-2  border-primary rounded-full py-3 px-4 md:px-6 bg-primary text-[14px] md:text-[16px] text-white  font-jost font-normal uppercase"
+              >
+                Sign In
+              </Link>
+            </div>
           </div>
         </div>
       </div>

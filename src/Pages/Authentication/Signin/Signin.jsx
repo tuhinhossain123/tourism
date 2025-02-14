@@ -57,7 +57,7 @@ const Signin = () => {
                   to="/signup"
                   className=" text-red-600 underline pl-2 font-semibold text-lg"
                 >
-                  Sign Up
+                  Create One
                 </Link>
               </p>
             </div>
