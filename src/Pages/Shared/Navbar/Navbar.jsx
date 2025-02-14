@@ -1,15 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../../../assets/images/logo.png";
 import { FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { BsCart3 } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import { IoIosMenu } from "react-icons/io";
+import { AuthContext } from "../../../Providers/AuthProviders";
+import ProfileDrop from "../../../Components/ProfileDrop/ProfileDrop";
 
 const Navbar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const { user, }= useContext(AuthContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -109,12 +112,23 @@ const Navbar = () => {
             </div>
 
             <div className="hidden lg:block">
-              <Link
-                to="/signin"
-                className="border-2  border-primary rounded-full py-3 px-6 bg-primary text-[16px] text-white font-jost font-normal uppercase"
-              >
-                Sign In
-              </Link>
+              {user ? (
+                <>
+                  <div className="w-16 md:w-16 rounded-full  object-cover ">
+                    {/* <img src={user?.photoURL} alt="" /> */}
+                    <ProfileDrop></ProfileDrop>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/signin"
+                    className="border-2  border-primary rounded-full py-3 px-6 bg-primary text-[16px] text-white font-jost font-normal uppercase"
+                  >
+                    Sign In
+                  </Link>
+                </>
+              )}
             </div>
           </div>
 
