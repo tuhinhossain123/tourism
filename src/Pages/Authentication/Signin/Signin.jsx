@@ -1,13 +1,14 @@
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-// import toast from "react-hot-toast";
-// import { useContext } from "react";
-// import { AuthContext } from "../../../Providers/AuthProviders";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Signin = () => {
-  //   const { singIn, singInWithGoogle } = useContext(AuthContext);
-  //   const navigate = useNavigate();
+  const { singIn, singInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -15,24 +16,24 @@ const Signin = () => {
     formState: { errors },
   } = useForm();
 
-  //   const handleLogin = (e) => {
-  //     e.preventDefault();
-  //     const email = e.target.email.value;
-  //     const password = e.target.password.value;
+  const onSubmit = (data) => {
+    singIn(data.email, data.password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      navigate(from, { replace: true });
+    });
+  };
 
-  //     singIn(email, password)
-  //       .then((result) => {
-  //         const user = result.user;
-  //         console.log(user);
-  //         // toast.success("Logged In Successful!", result.user);
-  //         // e.target.reset();
-  //         // navigate("/");
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //         // setError(error.message);
-  //       });
-  //   };
+  const handleWithGoogle = () => {
+    singInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div className="my-48 lg:mt-[280px]">
@@ -53,18 +54,19 @@ const Signin = () => {
             Welcome To <br />
             <span className="text-primary"> Kaylashae_Adventures</span>
           </h2>
-          <form onSubmit={handleSubmit()}>
-            <div className="pb-6">
-              <button
-                // onClick={handleWithGoogle}
-                className="btn w-full py-3  font-semibold  text-lg flex justify-center items-center gap-4 border-2 rounded-full text-black"
-              >
-                <span>
-                  <FcGoogle className="text-2xl"></FcGoogle>
-                </span>
-                <span>Continue With Google</span>
-              </button>
-            </div>
+          {/* google authentication */}
+          <div className="pb-6">
+            <button
+              onClick={handleWithGoogle}
+              className="btn w-full py-3  font-semibold  text-lg flex justify-center items-center gap-4 border-2 rounded-full text-black"
+            >
+              <span>
+                <FcGoogle className="text-2xl"></FcGoogle>
+              </span>
+              <span>Continue With Google</span>
+            </button>
+          </div>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <h3 className="text-center"> OR </h3>
             <div className="form-control pt-2 lg:pt-5  pb-6 md:pb-8">
               <h5 className="font-medium font-jost text-black text-lg pb-3 md:pb-2">

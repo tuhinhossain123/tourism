@@ -9,6 +9,7 @@ import GroupHikes from "../Pages/GroupHikes/GroupHikes";
 import Shop from "../Pages/Shop/Shop";
 import Signup from "../Pages/Authentication/Signup/Signup";
 import Signin from "../Pages/Authentication/Signin/Signin";
+import PrivateRoute from "../Pages/Authentication/PrivateRoute/PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -32,7 +33,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/shop",
-        element: <Shop></Shop>,
+        element: (
+          <PrivateRoute>
+            <Shop></Shop>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/work",

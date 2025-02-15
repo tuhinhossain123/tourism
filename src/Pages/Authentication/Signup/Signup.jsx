@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-// import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Signup = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -16,6 +18,13 @@ const Signup = () => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      updateUserProfile(data?.name, data?.photoURL)
+        .then(() => {
+          console.log("User Profile Info update");
+          reset();
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
     });
   };
 
@@ -24,18 +33,20 @@ const Signup = () => {
       <div className="flex flex-col lg:flex-row justify-center  max-w-[1680px] mx-auto  px-6 lg:px-8">
         <div className="hidden lg:block lg:w-[70%] lg:pl-28">
           <h2 className="text-3xl md:text-4xl lg:text-[60px] font-jost font-medium  pb-4 lg:pb-6 lg:leading-[1.1]">
-            The trip of your dreams  <br /> starts with{" "}
+            The trip of your dreams <br /> starts with{" "}
             <span className="text-primary">Kaylashae_Adventures</span>
           </h2>
           <h3 className="text-2xl text-[#47545F] font-jost font-normal">
-            Covering hundreds of destinations and countless experiences,<br />
+            Covering hundreds of destinations and countless experiences,
+            <br />
             Kaylashae_Adventures is your guide for traveling better and smarter.
           </h3>
         </div>
 
         <div className="w-full lg:w-[30%]">
           <h2 className="text-3xl font-jost font-medium pb-8 lg:pb-12">
-            Welcome To <span className="text-primary"> Kaylashae_Adventures</span>
+            Welcome To{" "}
+            <span className="text-primary"> Kaylashae_Adventures</span>
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control  pb-6 md:pb-8">

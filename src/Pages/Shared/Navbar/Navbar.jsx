@@ -12,7 +12,7 @@ const Navbar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
-  const { user, }= useContext(AuthContext);
+  const { user}= useContext(AuthContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +28,7 @@ const Navbar = () => {
   const handleCloseMenu = () => {
     setIsOpen(false);
   };
+
 
   return (
     <nav
@@ -115,7 +116,6 @@ const Navbar = () => {
               {user ? (
                 <>
                   <div className="w-16 md:w-16 rounded-full  object-cover ">
-                    {/* <img src={user?.photoURL} alt="" /> */}
                     <ProfileDrop></ProfileDrop>
                   </div>
                 </>
@@ -140,13 +140,23 @@ const Navbar = () => {
               </button>
             </div>
 
-            <div>
-              <Link
-                to="/signin"
-                className="border-2  border-primary rounded-full py-3 px-4 md:px-6 bg-primary text-[14px] md:text-[16px] text-white  font-jost font-normal uppercase"
-              >
-                Sign In
-              </Link>
+            <div className="block lg:hidden">
+              {user ? (
+                <>
+                  <div className="w-16 md:w-16 rounded-full  object-cover ">
+                    <ProfileDrop></ProfileDrop>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/signin"
+                    className="border-2  border-primary rounded-full py-3 px-6 bg-primary text-[16px] text-white font-jost font-normal uppercase"
+                  >
+                    Sign In
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -171,14 +181,14 @@ const Navbar = () => {
                   ? "text-[#F9B233] underline"
                   : "text-primary"
               }`}
-              onClick={handleCloseMenu} // Close the menu when a link is clicked
+              onClick={handleCloseMenu} 
             >
               {item.label}
             </Link>
           ))}
           <button
             className="border-2 border-primary text-primary font-jost font-medium text-[16px] px-6 py-3 rounded-sm uppercase hover:bg-primary hover:text-white transition"
-            onClick={handleCloseMenu} // Also close when clicking Contact Us
+            onClick={handleCloseMenu} 
           >
             Contact Us
           </button>
