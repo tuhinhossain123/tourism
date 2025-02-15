@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
-import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 
 const Signup = () => {

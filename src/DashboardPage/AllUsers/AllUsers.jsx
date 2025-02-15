@@ -13,6 +13,7 @@ const AllUsers = () => {
   return (
     <div>
       <h2>all user: {users.length}</h2>
+      <button className="btn btn-secondary">Secondary</button>
     </div>
   );
 };
