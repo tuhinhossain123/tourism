@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link, useNavigate } from "react-router-dom";
 import defaultUserImage from "../../assets/images/profile-circle-icon.png";
@@ -34,18 +34,23 @@ const ProfileDrop = () => {
         className="flex text-sm rounded-full md:me-0  "
         type="button"
       >
-        <img
-          className="w-16 md:w-16 rounded-full  object-cover border-2 border-red-500"
-          src={user?.photoURL ? user?.photoURL : defaultUserImage}
-          alt=""
-        />
+        {useMemo(
+          () => (
+            <img
+              className="w-16 md:w-16 rounded-full  object-cover"
+              src={user?.photoURL ? user?.photoURL : defaultUserImage}
+              alt=""
+            />
+          ),
+          [user.photoURL]
+        )}
       </button>
 
       {/* Dropdown menu */}
       {isDropdownOpen && (
         <div
           id="dropdownAvatar"
-          className="z-50 line absolute right-0 mt-2 bg-[#fff] divide-y shadow  divide-gray-100 border border-primary rounded-lg transition-max-height ease-in-out duration-300"
+          className="z-50  line absolute right-0 mt-1 bg-[#fff] divide-y shadow  divide-gray-100  rounded-lg transition-max-height ease-in-out duration-500"
           style={{
             maxHeight: isDropdownOpen ? "300px" : "0",
             overflow: "hidden",
