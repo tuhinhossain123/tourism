@@ -2,10 +2,13 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
+import axios from "axios";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 
 const Signup = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosSecure= useAxiosSecure()
 
   const {
     register,
@@ -20,9 +23,17 @@ const Signup = () => {
       console.log(loggedUser);
       updateUserProfile(data?.name, data?.photoURL)
         .then(() => {
-          console.log("User Profile Info update");
-          reset();
-          navigate("/");
+          // create user entry data
+          const userInfo = {
+            name: data.name,
+            emai: data.email,
+          };
+          axiosSecure.post("http://localhost:5001/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              reset();
+              navigate("/");
+            }
+          });
         })
         .catch((error) => console.log(error));
     });

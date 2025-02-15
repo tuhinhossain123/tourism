@@ -24,7 +24,7 @@ const ProfileDrop = () => {
   // };
   // console.log(handleDroupdown);
 
-  console.log(user);
+
 
   return (
     <div className="relative inline-block text-left">
@@ -37,13 +37,14 @@ const ProfileDrop = () => {
         {useMemo(
           () => (
             <img
-              className="w-16 md:w-16 rounded-full  object-cover"
+              className="w-16 md:w-16 rounded-full  object-cover border-red-600"
               src={user?.photoURL ? user?.photoURL : defaultUserImage}
               alt=""
             />
           ),
           [user.photoURL]
         )}
+        
       </button>
 
       {/* Dropdown menu */}

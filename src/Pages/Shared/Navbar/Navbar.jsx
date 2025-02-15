@@ -89,6 +89,7 @@ const Navbar = () => {
               { path: "/hike", label: "GROUP HIKES" },
               { path: "/shop", label: "SHOP" },
               { path: "/work", label: "WORK WITH US" },
+              // { path: "/dashboard", label: "dash" },
             ].map((item) => (
               <Link
                 key={item.path}

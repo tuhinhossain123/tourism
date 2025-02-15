@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
+import axios from "axios";
 
 const Signin = () => {
   const { singIn, singInWithGoogle } = useContext(AuthContext);
@@ -28,7 +29,15 @@ const Signin = () => {
     singInWithGoogle()
       .then((result) => {
         console.log(result.user);
-        navigate("/");
+        const userInfo = {
+          email: result.user?.email,
+          name: result.user?.displayName,
+        };
+        axios.post("http://localhost:5001/users", userInfo).then((res) => {
+          console.log(res.data);
+          navigate("/");
+        });
+       
       })
       .catch((error) => {
         console.error(error);
