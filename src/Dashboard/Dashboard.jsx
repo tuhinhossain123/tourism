@@ -60,23 +60,31 @@ export default function Dashboard() {
                 onClick={() => setIsOpen(false)} // Close sidebar on click
               >
                 <ImUsers className="text-xl text-[#47545F]"></ImUsers>
-                Dashboard
+                Add Blog
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/dashboard/settings"
+                to="/dashboard"
                 className="px-5 py-3 bg-white rounded-md text-[#47545F] text-[18px] font-jost font-medium flex items-center gap-3"
                 onClick={() => setIsOpen(false)} // Close sidebar on click
               >
-                <CiSettings className="text-xl text-[#47545F]"></CiSettings>
-                Settings
+                <ImUsers className="text-xl text-[#47545F]"></ImUsers>
+                Add Blog
               </NavLink>
             </li>
 
             {/* Footer Links (Help, Logout) */}
             <div className="pt-[150px] lg:pt-[350px]">
               <hr className="border-t-[2px] pt-3 pb-5" />
+              <Link
+                to="/dashboard/help"
+                className="px-5 pb-4 text-white text-[18px] font-jost font-normal flex items-center gap-2"
+                onClick={() => setIsOpen(false)} // Close sidebar on click
+              >
+                <CiSettings className="text-2xl"></CiSettings>
+                Settings
+              </Link>
               <Link
                 to="/dashboard/help"
                 className="px-5 pb-4 text-white text-[18px] font-jost font-normal flex items-center gap-2"

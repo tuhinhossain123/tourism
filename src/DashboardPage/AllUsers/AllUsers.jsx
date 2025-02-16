@@ -3,37 +3,57 @@ import { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { LuPenLine } from "react-icons/lu";
 import { FaRegTrashAlt } from "react-icons/fa";
-import defultUser from "../../assets/images/profile-circle-icon.png"
+import defultUser from "../../assets/images/profile-circle-icon.png";
 import Swal from "sweetalert2";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 
-
-
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const {user}=useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
   console.log(user);
 
   // States for pagination
-  const [currentPage, setCurrentPage] = useState(1); 
-  const [limit, setLimit] = useState(2); 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limit, setLimit] = useState(6);
 
   // Fetching paginated users
-  const { refetch, data: usersData = {}, isLoading } = useQuery({
+  const {
+    refetch,
+    data: usersData = {},
+    isLoading,
+  } = useQuery({
     queryKey: ["users", currentPage, limit],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/users?page=${currentPage}&limit=${limit}`);
+      const res = await axiosSecure.get(
+        `/users?page=${currentPage}&limit=${limit}`
+      );
       return res.data;
     },
   });
-  
+
+  //   admin
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${user.name} is an admin now`,
+          showCancelButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
   // Destructure the data from the response
   const { users = [], totalPages, totalUsers } = usersData;
 
-  const handleDelete = (id) => {
+  const handleDelete = (user) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -44,7 +64,7 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/users/${id}`).then((res) => {
+        axiosSecure.delete(`/users/${user._id}`).then((res) => {
           if (res.data.deletedCount) {
             refetch();
             Swal.fire({
@@ -62,7 +82,7 @@ const AllUsers = () => {
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= totalPages) {
       setCurrentPage(newPage);
-      refetch(); 
+      refetch();
     }
   };
 
@@ -73,7 +93,7 @@ const AllUsers = () => {
       </h2>
       {isLoading ? (
         <div className="flex justify-center my-10">
-        <span className="loading loading-spinner loading-lg"></span>
+          <span className="loading loading-spinner loading-lg"></span>
         </div>
       ) : (
         <>
@@ -106,14 +126,19 @@ const AllUsers = () => {
                     </td>
                     <td>{user?.name}</td>
                     <td>{user?.email}</td>
-                    <td>{user?.roll}</td>
-                    <td>
-                      <div className="flex items-center gap-5">
-                        <Link href="">
+                    <td className="">
+                      {user?.role === "admin" ? (
+                        "Admin"
+                      ) : (
+                        <button onClick={() => handleMakeAdmin(user)}>
                           <LuPenLine className="text-xl text-green-400"></LuPenLine>
-                        </Link>
-                        <button onClick={() => handleDelete(user._id)}>
-                          <FaRegTrashAlt className="text-xl text-primary"></FaRegTrashAlt>
+                        </button>
+                      )}
+                    </td>
+                    <td>
+                      <div className="">
+                        <button onClick={() => handleDelete(user)}>
+                          <FaRegTrashAlt className="text-xl text-red-600"></FaRegTrashAlt>
                         </button>
                       </div>
                     </td>
@@ -127,7 +152,11 @@ const AllUsers = () => {
           <div className="flex justify-center  items-center gap-6 lg:gap-10 mt-10">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
-              className={`btn bg-gray-100 ${currentPage === 1 ? "btn-disabled" : "bg-primary hover:bg-primary text-white"}`}
+              className={`btn bg-gray-100 ${
+                currentPage === 1
+                  ? "btn-disabled"
+                  : "bg-primary hover:bg-primary text-white"
+              }`}
               disabled={currentPage === 1}
             >
               <FaChevronLeft className="text-xl lg:text-2xl text-white  font-normal"></FaChevronLeft>
@@ -137,7 +166,11 @@ const AllUsers = () => {
             </span>
             <button
               onClick={() => handlePageChange(currentPage + 1)}
-              className={`btn ${currentPage === totalPages ? "btn-disabled" : "bg-primary hover:bg-primary text-white"}`}
+              className={`btn ${
+                currentPage === totalPages
+                  ? "btn-disabled"
+                  : "bg-primary hover:bg-primary text-white"
+              }`}
               disabled={currentPage === totalPages}
             >
               <FaChevronRight className="text-xl lg:text-2xl text-white font-normal "></FaChevronRight>
