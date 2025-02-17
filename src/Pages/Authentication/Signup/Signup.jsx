@@ -7,7 +7,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 const Signup = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
-  const axiosSecure= useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   const {
     register,
@@ -16,28 +16,46 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
+  // const onSubmit = (data) => {
+  //   createUser(data.email, data.password).then((result) => {
+  //     const loggedUser = result.user;
+  //     console.log(loggedUser);
+  //     updateUserProfile(data?.name, data?.photoURL)
+  //       .then(() => {
+  //         // create user entry data
+  //         const userInfo = {
+  //           name: data.name,
+  //           email: data.email,
+  //         };
+  //         axiosSecure.post("http://localhost:5001/users", userInfo).then((res) => {
+  //           console.log(res.data);
+  //           if (res.data.insertedId) {
+  //             reset();
+  //             navigate("/");
+  //           }
+  //         });
+  //       })
+  //       .catch((error) => console.log(error));
+  //   });
+  // };
+
   const onSubmit = (data) => {
-    createUser(data.email, data.password).then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      updateUserProfile(data?.name, data?.photoURL)
-        .then(() => {
-          // create user entry data
-          const userInfo = {
-            name: data.name,
-            emai: data.email,
-          };
-          axiosSecure.post("http://localhost:5001/users", userInfo).then((res) => {
-            if (res.data.insertedId) {
-              reset();
-              navigate("/");
-            }
-          });
-        })
-        .catch((error) => console.log(error));
+    createUser(data.email, data.password).then((res) => {
+      updateUserProfile(data.name, data.password)
+        .then(() => {})
+        .catch((err) => console.log(err.message));
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+      };
+      console.log(userInfo);
+      axiosSecure.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        reset()
+        navigate("/");
+      });
     });
   };
-
   return (
     <div className="my-48 lg:mt-[280px]">
       <div className="flex flex-col lg:flex-row justify-center  max-w-[1680px] mx-auto  px-6 lg:px-8">
@@ -122,7 +140,7 @@ const Signup = () => {
               </div>
             </div>
             <div className="form-control mt-8">
-              <button className="btn w-full py-3 px-2 font-semibold rounded-md text-lg bg-primary hover:bg-secondary text-white">
+              <button className="btn w-full py-3 px-2 font-semibold rounded-md text-lg bg-primary hover:bg-primary text-white">
                 Sign Up
               </button>
             </div>

@@ -5,11 +5,14 @@ import defaultUserImage from "../../assets/images/profile-circle-icon.png";
 import { TbLogout2 } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoBookmarkOutline } from "react-icons/io5";
+import useUser from "../../Hooks/userUser/userUser";
 
 const ProfileDrop = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
+  const [currentUser] = useUser();
+ 
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -17,13 +20,12 @@ const ProfileDrop = () => {
   const handleSignOut = () => {
     logOut().then(() => {
       navigate("/signin");
+      setDropdownOpen(false);
     });
   };
-  // const handleDroupdown = () => {
-  //   setDropdownOpen(false);
-  // };
-  // console.log(handleDroupdown);
-
+  const handleDroupdown = () => {
+    setDropdownOpen(false);
+  };
 
 
   return (
@@ -44,7 +46,6 @@ const ProfileDrop = () => {
           ),
           [user.photoURL]
         )}
-        
       </button>
 
       {/* Dropdown menu */}
@@ -67,7 +68,10 @@ const ProfileDrop = () => {
             aria-labelledby="dropdownUserAvatarButton"
           >
             <li>
-              <Link className="text-[16px] text-[#47545F] font-jost font-medium flex items-center gap-2">
+              <Link
+                onClick={handleDroupdown}
+                className="text-[16px] text-[#47545F] font-jost font-medium flex items-center gap-2"
+              >
                 <span>
                   <IoBookmarkOutline></IoBookmarkOutline>
                 </span>{" "}
@@ -75,7 +79,10 @@ const ProfileDrop = () => {
               </Link>
             </li>
             <li>
-              <Link className="text-[16px] text-[#47545F] font-jost font-medium flex items-center gap-2">
+              <Link
+                onClick={handleDroupdown}
+                className="text-[16px] text-[#47545F] font-jost font-medium flex items-center gap-2"
+              >
                 <span>
                   <IoSettingsOutline></IoSettingsOutline>
                 </span>{" "}
@@ -83,16 +90,29 @@ const ProfileDrop = () => {
               </Link>
             </li>
           </ul>
-          <div className="">
-            <button
-              onClick={handleSignOut}
-              className="w-full px-5 py-4  bg-primary text-white flex items-center gap-2"
-            >
-              <span>
-                <TbLogout2 className="text-xl font-bold"></TbLogout2>
-              </span>{" "}
-              <span className="text-lg font-jost font-normal">Sign Out</span>
-            </button>
+          <div className="bg-primary px-5  py-3">
+            {currentUser?.role === "admin" ? (
+              <div className="w-ful">
+                <Link to="/dashboard" className=" text-white text-lg font-jost font-normal">
+                  Dashboard
+                </Link>
+              </div>
+            ) : (
+              <div>
+                {" "}
+                <button
+                  onClick={handleSignOut}
+                  className="w-full px-5 py-4  bg-primary text-white flex items-center gap-2"
+                >
+                  <span>
+                    <TbLogout2 className="text-xl font-bold"></TbLogout2>
+                  </span>{" "}
+                  <span className="text-lg font-jost font-normal">
+                    Sign Out
+                  </span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

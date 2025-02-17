@@ -65,17 +65,25 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path:"dashboard",
-    element:<Dashboard></Dashboard>,
-    children:[
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
       {
         path: "post",
-        element: <PostFrom></PostFrom>
+        element: <PostFrom></PostFrom>,
       },
       {
         path: "users",
-        element: <AllUsers></AllUsers>
-      }
-    ]
-  }
+        element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "post",
+        element: <PostFrom></PostFrom>,
+      },
+    ],
+  },
 ]);

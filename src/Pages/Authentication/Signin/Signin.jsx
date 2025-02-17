@@ -4,10 +4,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import axios from "axios";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 
 const Signin = () => {
   const { singIn, singInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
@@ -28,16 +30,15 @@ const Signin = () => {
   const handleWithGoogle = () => {
     singInWithGoogle()
       .then((result) => {
-        console.log(result.user);
         const userInfo = {
           email: result.user?.email,
           name: result.user?.displayName,
+          role: "user",
         };
-        axios.post("http://localhost:5001/users", userInfo).then((res) => {
-          console.log(res.data);
+        axiosSecure.post("/users", userInfo).then((res) => {
+          console.log(res);
           navigate("/");
         });
-       
       })
       .catch((error) => {
         console.error(error);
@@ -63,19 +64,20 @@ const Signin = () => {
             Welcome To <br />
             <span className="text-primary"> Kaylashae_Adventures</span>
           </h2>
-          {/* google authentication */}
-          <div className="pb-6">
-            <button
-              onClick={handleWithGoogle}
-              className="btn w-full py-3  font-semibold  text-lg flex justify-center items-center gap-4 border-2 rounded-full text-black"
-            >
-              <span>
-                <FcGoogle className="text-2xl"></FcGoogle>
-              </span>
-              <span>Continue With Google</span>
-            </button>
-          </div>
+
           <form onSubmit={handleSubmit(onSubmit)}>
+            {/* google authentication */}
+            <div className="pb-6">
+              <button
+                onClick={handleWithGoogle}
+                className="btn w-full py-3  font-semibold  text-lg flex justify-center items-center gap-4 border-2 rounded-full text-black"
+              >
+                <span>
+                  <FcGoogle className="text-2xl"></FcGoogle>
+                </span>
+                <span>Continue With Google</span>
+              </button>
+            </div>
             <h3 className="text-center"> OR </h3>
             <div className="form-control pt-2 lg:pt-5  pb-6 md:pb-8">
               <h5 className="font-medium font-jost text-black text-lg pb-3 md:pb-2">
@@ -126,7 +128,7 @@ const Signin = () => {
               </div>
             </div>
             <div className="form-control mt-8">
-              <button className="btn w-full py-3 px-2 font-semibold rounded-md text-lg bg-primary  text-white">
+              <button className="btn w-full py-3 px-2 font-semibold rounded-md text-lg bg-primary hover:bg-primary  text-white">
                 Sign In
               </button>
             </div>

@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext,  useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { LuPenLine } from "react-icons/lu";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -9,11 +9,10 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { AuthContext } from "../../Providers/AuthProviders";
 import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 
+
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
-
-  console.log(user);
 
   // States for pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,6 +49,11 @@ const AllUsers = () => {
       }
     });
   };
+
+
+
+
+
   // Destructure the data from the response
   const { users = [], totalPages, totalUsers } = usersData;
 
@@ -86,6 +90,7 @@ const AllUsers = () => {
     }
   };
 
+
   return (
     <div className="w-full lg:w-[90%] mx-auto">
       <h2 className="text-xl lg:text-3xl text-[#47545F]  font-jost font-medium pb-3 lg:pb-6">
@@ -100,7 +105,7 @@ const AllUsers = () => {
           <div className="overflow-x-auto">
             <table className="table border">
               <thead>
-                <tr className="bg-primary text-white text-xl font-normal">
+                <tr className="bg-primary text-white text-xl font-jost font-normal">
                   <th>No</th>
                   <th>Profile</th>
                   <th>Name</th>
@@ -124,9 +129,9 @@ const AllUsers = () => {
                         </div>
                       </div>
                     </td>
-                    <td>{user?.name}</td>
-                    <td>{user?.email}</td>
-                    <td className="">
+                    <td className="font-jost font-normal text-[#47545F] lg:text-lg">{user?.name}</td>
+                    <td className="font-jost font-normal text-[#47545F] lg:text-lg">{user?.email}</td>
+                    <td>
                       {user?.role === "admin" ? (
                         "Admin"
                       ) : (
@@ -136,7 +141,7 @@ const AllUsers = () => {
                       )}
                     </td>
                     <td>
-                      <div className="">
+                      <div>
                         <button onClick={() => handleDelete(user)}>
                           <FaRegTrashAlt className="text-xl text-red-600"></FaRegTrashAlt>
                         </button>
