@@ -9,6 +9,7 @@ import { RiMenu2Fill } from "react-icons/ri";
 import { IoMdAdd } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 import { AuthContext } from "../Providers/AuthProviders";
+import DashboardNavbar from "../DashboardPage/DashboardNavbar/DashboardNavbar";
 
 export default function Dashboard() {
   const { logOut } = useContext(AuthContext);
@@ -124,8 +125,7 @@ export default function Dashboard() {
 
       {/* Main Content Area */}
       <div className="lg:w-4/5 w-full flex-1 bg-gray-100">
-        {/* Toggle Button for Small Screens */}
-        <div className="bg-primary text-white">
+        <div className="bg-primary text-white sticky top-0 z-30">
           <button
             className="lg:hidden px-6 py-3 rounded-md mb-4"
             onClick={() => setIsOpen(true)}
@@ -134,7 +134,8 @@ export default function Dashboard() {
           </button>
         </div>
 
-        <div className="px-6 my-10 ">
+        <div className="px-5 lg:px-8 my-2">
+          <DashboardNavbar></DashboardNavbar>
           <Outlet></Outlet>
         </div>
       </div>

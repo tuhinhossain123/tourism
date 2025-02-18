@@ -1,22 +1,17 @@
-"use client";
-import { useContext,  useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { LuPenLine } from "react-icons/lu";
 import { FaRegTrashAlt } from "react-icons/fa";
 import defultUser from "../../assets/images/profile-circle-icon.png";
 import Swal from "sweetalert2";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
-import { AuthContext } from "../../Providers/AuthProviders";
 import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
-
+import { useState } from "react";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useContext(AuthContext);
-
   // States for pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(8);
 
   // Fetching paginated users
   const {
@@ -39,20 +34,9 @@ const AllUsers = () => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         refetch();
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: `${user.name} is an admin now`,
-          showCancelButton: false,
-          timer: 1500,
-        });
       }
     });
   };
-
-
-
-
 
   // Destructure the data from the response
   const { users = [], totalPages, totalUsers } = usersData;
@@ -90,9 +74,8 @@ const AllUsers = () => {
     }
   };
 
-
   return (
-    <div className="w-full lg:w-[90%] mx-auto">
+    <div className="w-full my-8">
       <h2 className="text-xl lg:text-3xl text-[#47545F]  font-jost font-medium pb-3 lg:pb-6">
         Total Users: {totalUsers}
       </h2>
@@ -129,8 +112,12 @@ const AllUsers = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="font-jost font-normal text-[#47545F] lg:text-lg">{user?.name}</td>
-                    <td className="font-jost font-normal text-[#47545F] lg:text-lg">{user?.email}</td>
+                    <td className="font-jost font-normal text-[#47545F] lg:text-lg">
+                      {user?.name}
+                    </td>
+                    <td className="font-jost font-normal text-[#47545F] lg:text-lg">
+                      {user?.email}
+                    </td>
                     <td>
                       {user?.role === "admin" ? (
                         "Admin"

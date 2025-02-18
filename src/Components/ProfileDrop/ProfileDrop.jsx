@@ -6,13 +6,13 @@ import { TbLogout2 } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoBookmarkOutline } from "react-icons/io5";
 import useUser from "../../Hooks/userUser/userUser";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 const ProfileDrop = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const [currentUser] = useUser();
- 
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -27,7 +27,6 @@ const ProfileDrop = () => {
     setDropdownOpen(false);
   };
 
-
   return (
     <div className="relative inline-block text-left">
       <button
@@ -39,29 +38,34 @@ const ProfileDrop = () => {
         {useMemo(
           () => (
             <img
-              className="w-16 md:w-16 rounded-full  object-cover border-red-600"
+              className="w-16 md:w-16 rounded-full  object-cover                                                                                                                    "
               src={user?.photoURL ? user?.photoURL : defaultUserImage}
               alt=""
             />
           ),
           [user.photoURL]
         )}
+        <h2>h</h2>
       </button>
 
       {/* Dropdown menu */}
       {isDropdownOpen && (
         <div
           id="dropdownAvatar"
-          className="z-50  line absolute right-0 mt-1 bg-[#fff] divide-y shadow  divide-gray-100  rounded-lg transition-max-height ease-in-out duration-500"
+          className="z-50 w-[60vw] md:w-[35vw] lg:w-[11vw] line absolute right-0 mt-3 bg-[#fff] divide-y shadow  divide-gray-100  rounded-lg transition-max-height ease-in-out duration-500"
           style={{
             maxHeight: isDropdownOpen ? "300px" : "0",
             overflow: "hidden",
           }}
         >
           {/* Content of the dropdown */}
-          <div className="px-5 py-3 text-sm text-white rounded-t-md bg-primary">
-            <div>{user?.displayName}</div>
-            <div className="font-medium truncate">{user?.email}</div>
+          <div className="px-5 py-3  text-sm text-white rounded-t-md bg-primary">
+            <div className="text-lg font-jost font-medium">
+              {user?.displayName}
+            </div>
+            <div className="text-[14px] font-jost font-normal truncate">
+              {user?.email}
+            </div>
           </div>
           <ul
             className="space-y-4 py-6 px-5"
@@ -90,11 +94,14 @@ const ProfileDrop = () => {
               </Link>
             </li>
           </ul>
-          <div className="bg-primary px-5  py-3">
+          <div className="bg-primary ">
             {currentUser?.role === "admin" ? (
-              <div className="w-ful">
-                <Link to="/dashboard" className=" text-white text-lg font-jost font-normal">
-                  Dashboard
+              <div className="py-4">
+                <Link
+                  to="/dashboard"
+                  className=" text-white text-lg font-jost font-normal px-4 flex items-center gap-2"
+                >
+                  <LuLayoutDashboard></LuLayoutDashboard> Dashboard
                 </Link>
               </div>
             ) : (
