@@ -11,7 +11,7 @@ const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
   // States for pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(7);
 
   // Fetching paginated users
   const {
@@ -115,20 +115,23 @@ const AllUsers = () => {
                     <td className="font-jost font-normal text-[#47545F] lg:text-lg">
                       {user?.name}
                     </td>
-                    <td className="font-jost font-normal text-[#47545F] lg:text-lg">
+                    <td className="font-jost font-normal text-[#47545F] lg:text-lg ">
                       {user?.email}
                     </td>
                     <td>
                       {user?.role === "admin" ? (
                         "Admin"
                       ) : (
-                        <button onClick={() => handleMakeAdmin(user)}>
-                          <LuPenLine className="text-xl text-green-400"></LuPenLine>
+                        <button
+                          onClick={() => handleMakeAdmin(user)}
+                          className="pl-3"
+                        >
+                          <LuPenLine className="text-xl text-primary"></LuPenLine>
                         </button>
                       )}
                     </td>
                     <td>
-                      <div>
+                      <div className="pl-5">
                         <button onClick={() => handleDelete(user)}>
                           <FaRegTrashAlt className="text-xl text-red-600"></FaRegTrashAlt>
                         </button>

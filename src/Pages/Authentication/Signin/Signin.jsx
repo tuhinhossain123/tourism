@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
-import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 
 const Signin = () => {
@@ -33,6 +32,7 @@ const Signin = () => {
         const userInfo = {
           email: result.user?.email,
           name: result.user?.displayName,
+          photo: result.user.photoURL,
           role: "user",
         };
         axiosSecure.post("/users", userInfo).then((res) => {
@@ -64,21 +64,20 @@ const Signin = () => {
             Welcome To <br />
             <span className="text-primary"> Kaylashae_Adventures</span>
           </h2>
-
+          {/* google authentication */}
+          <div className="pb-6">
+            <button
+              onClick={handleWithGoogle}
+              className="btn w-full py-3  font-semibold  text-lg flex justify-center items-center gap-4 border-2 rounded-full text-black"
+            >
+              <span>
+                <FcGoogle className="text-2xl"></FcGoogle>
+              </span>
+              <span>Continue With Google</span>
+            </button>
+          </div>
+          <h3 className="text-center"> OR </h3>
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* google authentication */}
-            <div className="pb-6">
-              <button
-                onClick={handleWithGoogle}
-                className="btn w-full py-3  font-semibold  text-lg flex justify-center items-center gap-4 border-2 rounded-full text-black"
-              >
-                <span>
-                  <FcGoogle className="text-2xl"></FcGoogle>
-                </span>
-                <span>Continue With Google</span>
-              </button>
-            </div>
-            <h3 className="text-center"> OR </h3>
             <div className="form-control pt-2 lg:pt-5  pb-6 md:pb-8">
               <h5 className="font-medium font-jost text-black text-lg pb-3 md:pb-2">
                 Email <span className="text-primary text-[1.5rem]">*</span>
