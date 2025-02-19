@@ -13,7 +13,7 @@ const AllUsers = () => {
   // States for pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(7);
-  const [currentUser] = useUser();
+
 
   // Fetching paginated users
   const {

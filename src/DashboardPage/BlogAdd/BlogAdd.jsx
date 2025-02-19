@@ -30,7 +30,7 @@ const BlogAdd = () => {
       description,
     };
 
-    fetch("http://localhost:5001/blogs", {
+    fetch("https://tourism-server-nine.vercel.app/blogs", {
       method: "POST",
       headers: {
         "content-type": "application/json",
