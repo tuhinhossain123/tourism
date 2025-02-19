@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom";
-import blogImg2 from "../../assets/images/BImg2.png";
-import blogImg3 from "../../assets/images/Bimg3.png";
-import blogImg4 from "../../assets/images/Bimg4.png";
 import { FiArrowUpRight } from "react-icons/fi";
 import useBlogs from "../../Hooks/useBlogs/useBlogs";
 
 const BlogShare = () => {
   const [blogs] = useBlogs();
- 
+
   const { currentDate, title, img, keywords, description } = blogs?.[0] || {};
   const keywordsArray = keywords?.split(",");
   return (
@@ -46,7 +43,7 @@ const BlogShare = () => {
       {/* right side */}
       <div className="lg:w-[50%] space-y-7">
         {/* card-1 */}
-        {blogs.slice(1,4)?.map((blog) => (
+        {blogs.slice(1, 4)?.map((blog) => (
           <div
             key={blog._id}
             className="flex flex-col lg:flex-row gap-5 lg:gap-7"
