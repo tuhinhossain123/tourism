@@ -11,8 +11,8 @@ import Signup from "../Pages/Authentication/Signup/Signup";
 import Signin from "../Pages/Authentication/Signin/Signin";
 import PrivateRoute from "../Pages/Authentication/PrivateRoute/PrivateRoute";
 import Dashboard from "../Dashboard/Dashboard";
-import PostFrom from "../DashboardPage/PostFrom/PostFrom";
 import AllUsers from "../DashboardPage/AllUsers/AllUsers";
+import BlogAdd from "../DashboardPage/BlogAdd/BlogAdd";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -58,10 +58,6 @@ export const router = createBrowserRouter([
         path: "/signin",
         element: <Signin></Signin>,
       },
-      // {
-      //   path: "/dashboard",
-      //   element: <Dashboard></Dashboard>,
-      // },
     ],
   },
   {
@@ -73,16 +69,12 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "post",
-        element: <PostFrom></PostFrom>,
-      },
-      {
         path: "users",
         element: <AllUsers></AllUsers>,
       },
       {
-        path: "post",
-        element: <PostFrom></PostFrom>,
+        path: "blogAdd",
+        element: <BlogAdd></BlogAdd>,
       },
     ],
   },

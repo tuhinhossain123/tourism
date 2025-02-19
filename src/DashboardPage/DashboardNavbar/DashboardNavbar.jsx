@@ -8,7 +8,6 @@ import useUser from "../../Hooks/userUser/userUser";
 
 const DashboardNavbar = () => {
   const [currentUser] = useUser();
-  console.log(currentUser);
   return (
     <div className="my-4">
       <div className="flex flex-col-reverse md:flex-row justify-between items-center  gap-4 md:gap-4 lg:gap-0 w-full">
@@ -51,9 +50,9 @@ const DashboardNavbar = () => {
                   width={300}
                   height={300}
                   src={
-                    currentUser?.photoURL ? currentUser?.photoURL : defaultUserImage
+                    currentUser?.photo ? currentUser?.photo : defaultUserImage
                   }
-                  alt={currentUser?.name}
+                  alt={currentUser?.photo}
                 />
                
               </div>

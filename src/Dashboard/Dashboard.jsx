@@ -71,7 +71,7 @@ export default function Dashboard() {
             </li>
             <li>
               <NavLink
-                to="/dashboard/post"
+                to="/dashboard/blogAdd"
                 className={({ isActive }) =>
                   isActive
                     ? "px-5 py-3 bg-white rounded-md text-[#47545F] text-[18px] font-jost font-medium flex items-center gap-3"
@@ -80,7 +80,7 @@ export default function Dashboard() {
                 onClick={() => setIsOpen(false)}
               >
                 <IoMdAdd className="text-xl "></IoMdAdd>
-                Add Blog
+                Blog Add
               </NavLink>
             </li>
 

@@ -6,12 +6,14 @@ import Swal from "sweetalert2";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 import { useState } from "react";
+import useUser from "../../Hooks/userUser/userUser";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
   // States for pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(7);
+  const [currentUser] = useUser();
 
   // Fetching paginated users
   const {
@@ -106,8 +108,8 @@ const AllUsers = () => {
                         <div className="mask mask-squircle h-12 w-12">
                           <img
                             className="w-16 md:w-16 rounded-full object-cover"
-                            src={user?.photoURL ? user?.photoURL : defultUser}
-                            alt={user?.photoURL || "Default User Image"}
+                            src={user?.photo ? user?.photo : defultUser}
+                            alt={user?.photo || "Default User Image"}
                           />
                         </div>
                       </div>

@@ -39,13 +39,12 @@ const ProfileDrop = () => {
           () => (
             <img
               className="w-16 md:w-16 rounded-full  object-cover                                                                                                                    "
-              src={user?.photoURL ? user?.photoURL : defaultUserImage}
+              src={currentUser?.photo ? currentUser?.photo : defaultUserImage}
               alt=""
             />
           ),
-          [user.photoURL]
+          [currentUser.photo]
         )}
-        <h2>h</h2>
       </button>
 
       {/* Dropdown menu */}
