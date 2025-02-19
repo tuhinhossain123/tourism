@@ -1,58 +1,57 @@
-// import toast from "react-hot-toast";
-// import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
+import toast from "react-hot-toast";
 import moment from "moment";
+import axios from "axios";
 
-// const img_hosting_key = process.env.NEXT_PUBLIC_IMAGE_HOSYING_KEY;
-// const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
+const img_hosting_key = import.meta.env.VITE_IMAGES_HOSTING_KEY;
+const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
 
 const BlogAdd = () => {
-  //   const axiosSecure = useAxiosSecure();
   const currentDate = moment().format("MMMM DD,YYYY");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const from = e.target;
     const title = from.title.value;
-    // const img = e.target.img.files[0];
-    const category = from.category.value;
+    const img = e.target.img.files[0];
+    const keywords = from.keywords.value;
     const description = from.description.value;
+    // img hosting
+    const image = { image: img };
+    const res = await axios.post(img_hosting_api, image, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
 
-    // const image = { image: img };
-    // const res = await axiosSecure.post(img_hosting_api, image, {
-    //   headers: {
-    //     "content-type": "multipart/form-data",
-    //   },
-    // });
-    const productDetails = {
+    const blogDetails = {
       currentDate,
       title,
-      //   img: res.data.data.url,
-      category,
+      img: res.data.data.url,
+      keywords,
       description,
     };
-    console.log(productDetails);
-    //     fetch("https://grocery-shop-ser.vercel.app/products", {
-    //       method: "POST",
-    //       headers: {
-    //         "content-type": "application/json",
-    //       },
-    //       body: JSON.stringify(productDetails),
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //         if (res.data.insertedId) {
-    //           toast.success("Product added successfully!!");
-    //           from.reset();
-    //         }
-    //         console.log(data);
-    //       });
+
+    fetch("http://localhost:5001/blogs", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(blogDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (res.data.insertedId) {
+          from.reset();
+          toast.success("Blog added successfully!!");
+        }
+      });
   };
+
   return (
     <div className="my-10">
       <h2 className="text-xl lg:text-3xl text-secondary  font-jost font-medium pb-3 lg:pb-6 ">
-        Add Product
+        Add Blog
       </h2>
-      <form onSubmit={handleSubmit} className="">
+      <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-5">
           <div className="form-control w-full">
             <label>
@@ -60,7 +59,6 @@ const BlogAdd = () => {
                 type="text"
                 name="title"
                 placeholder="Blog Title"
-                required
                 className="input w-full border-2 border-primary focus:border-primary  placeholder:text-secondary font-jost font-medium  focus:outline-none  rounded-md py-2 px-4"
               />
             </label>
@@ -70,34 +68,34 @@ const BlogAdd = () => {
               <input
                 type="file"
                 name="img"
-                placeholder="Product Img"
+                placeholder="Blog Img"
                 required
                 className="input w-full border-2 border-primary focus:border-primary  placeholder:text-secondary font-jost font-medium  focus:outline-none  rounded-md py-2 px-4"
               />
             </label>
           </div>
+
           <div className="form-control w-full">
-            <select
-              id=""
-              name="category"
-              required
-              className="input w-full border-2 border-primary focus:border-primary  placeholder:text-secondary font-jost font-medium  focus:outline-none  rounded-md py-2 px-4"
-            >
-              <option value="Category">Select Packeges</option>
-              <option value="Best Seller">Best </option>
-              <option value="Featured">Featured</option>
-              <option value="Latest">Latest</option>
-            </select>
+            <label>
+              <input
+                type="text"
+                name="keywords"
+                placeholder="Keyeords"
+                required
+                className="input w-full border-2 border-primary focus:border-primary  placeholder:text-secondary font-jost font-medium  focus:outline-none  rounded-md py-2 px-4"
+              />
+            </label>
           </div>
         </div>
         <div className="mt-6">
           <div className="form-control w-full">
             <textarea
+              type="text"
               name="description"
               id=""
               cols="10"
               rows="20"
-              placeholder="Product Description"
+              placeholder="Blog Description"
               className="input w-full border-2 border-primary focus:border-primary h-52 placeholder:text-secondary font-jost font-medium  focus:outline-none  rounded-md py-2 px-4"
             ></textarea>
           </div>

@@ -16,28 +16,6 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
-  // const onSubmit = (data) => {
-  //   createUser(data.email, data.password).then((result) => {
-  //     const loggedUser = result.user;
-  //     console.log(loggedUser);
-  //     updateUserProfile(data?.name, data?.photoURL)
-  //       .then(() => {
-  //         // create user entry data
-  //         const userInfo = {
-  //           name: data.name,
-  //           email: data.email,
-  //         };
-  //         axiosSecure.post("http://localhost:5001/users", userInfo).then((res) => {
-  //           console.log(res.data);
-  //           if (res.data.insertedId) {
-  //             reset();
-  //             navigate("/");
-  //           }
-  //         });
-  //       })
-  //       .catch((error) => console.log(error));
-  //   });
-  // };
 
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((res) => {
