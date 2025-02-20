@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 import { useState } from "react";
-import useUser from "../../Hooks/userUser/userUser";
+
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();

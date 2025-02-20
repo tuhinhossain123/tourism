@@ -53,14 +53,14 @@ export default function Dashboard() {
           </h2>
           <hr className="border-t-[2px] mt-1 hidden lg:block" />
 
-          <ul className="space-y-4 pt-0 md:pt-10">
+          <ul className=" pt-0 md:pt-10">
             {/* Sidebar Menu Items */}
             <li>
               <NavLink
                 to="/dashboard/users"
                 className={({ isActive }) =>
                   isActive
-                    ? "px-5 py-3 bg-white rounded-md text-[#47545F] text-[18px] font-jost font-medium flex items-center gap-3"
+                    ? "px-5 py-3 bg-white rounded-md text-[#47545F] text-[18px] font-jost font-medium mb-3 flex items-center gap-3"
                     : "px-5 pb-4 text-white text-[18px] font-jost font-normal flex items-center gap-3"
                 }
                 onClick={() => setIsOpen(false)}

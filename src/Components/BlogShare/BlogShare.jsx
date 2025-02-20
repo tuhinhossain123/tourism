@@ -4,9 +4,12 @@ import useBlogs from "../../Hooks/useBlogs/useBlogs";
 
 const BlogShare = () => {
   const [blogs] = useBlogs();
+  const dailyBlogs = blogs.filter((blog) => blog.category === "daily");
 
-  const { currentDate, title, img, keywords, description } = blogs?.[0] || {};
+  const { currentDate, title, img, keywords, description } =
+    dailyBlogs?.[0] || {};
   const keywordsArray = keywords?.split(",");
+
   return (
     <div className="flex flex-col lg:flex-row gap-7">
       {/* left side */}

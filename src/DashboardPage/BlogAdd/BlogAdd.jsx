@@ -12,6 +12,7 @@ const BlogAdd = () => {
     const from = e.target;
     const title = from.title.value;
     const img = e.target.img.files[0];
+    const category= from.category.value;
     const keywords = from.keywords.value;
     const description = from.description.value;
     // img hosting
@@ -26,6 +27,7 @@ const BlogAdd = () => {
       currentDate,
       title,
       img: res.data.data.url,
+      category,
       keywords,
       description,
     };
@@ -39,10 +41,12 @@ const BlogAdd = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(res.data);
         if (res.data.insertedId) {
-          from.reset();
           toast.success("Blog added successfully!!");
+          from.reset();
         }
+        console.log(data);
       });
   };
 
@@ -52,7 +56,7 @@ const BlogAdd = () => {
         Add Blog
       </h2>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-5">
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-5">
           <div className="form-control w-full">
             <label>
               <input
@@ -74,7 +78,8 @@ const BlogAdd = () => {
               />
             </label>
           </div>
-
+        </div>
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-5 pt-6">
           <div className="form-control w-full">
             <label>
               <input
@@ -85,6 +90,19 @@ const BlogAdd = () => {
                 className="input w-full border-2 border-primary focus:border-primary  placeholder:text-secondary font-jost font-medium  focus:outline-none  rounded-md py-2 px-4"
               />
             </label>
+          </div>
+
+          <div className="form-control w-full">
+            <select
+              id=""
+              name="category"
+              required
+              className="input w-full border-2 border-primary focus:border-primary  placeholder:text-secondary font-jost font-medium  focus:outline-none  rounded-md py-2 px-4"
+            >
+              <option value="Category">Blog Category</option>
+              <option value="daily">Daily Blog</option>
+              <option value="latest">Latest Blog</option>
+            </select>
           </div>
         </div>
         <div className="mt-6">
@@ -100,8 +118,8 @@ const BlogAdd = () => {
             ></textarea>
           </div>
         </div>
-        <div className="mt-8">
-          <button className="bg-primary font-jost font-medium text-white rounded-lg px-4 py-2 text-lg ">
+        <div className="mt-8 ">
+          <button className="bg-primary w-full md:w-[50%] lg:w-[30%] font-jost font-medium text-white rounded-lg px-4 py-2 text-lg ">
             Add Blog
           </button>
         </div>
