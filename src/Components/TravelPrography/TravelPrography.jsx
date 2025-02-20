@@ -25,7 +25,7 @@ const TravelPrography = () => {
                 Shaneice is an adventure photography with an eay for capturing
                 the joy of adventure from traveling to adventure to outdoor
                 product, she prides herself in capturing authentic momets in
-                epic destinations - making moms think "I want that too!
+                epic destinations - making moms think I want that too!
               </p>
               <button className="text-[16px] font-jost font-medium text-primary border-2 border-primary flex justify-center items-center gap-2 py-2 px-6 mt-7 hover:bg-primary hover:text-white transition">
                 View Protfolio <IoArrowForwardSharp></IoArrowForwardSharp>

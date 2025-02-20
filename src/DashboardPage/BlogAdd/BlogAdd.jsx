@@ -12,7 +12,7 @@ const BlogAdd = () => {
     const from = e.target;
     const title = from.title.value;
     const img = e.target.img.files[0];
-    const category= from.category.value;
+    const category = from.category.value;
     const keywords = from.keywords.value;
     const description = from.description.value;
     // img hosting
@@ -41,12 +41,12 @@ const BlogAdd = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(res.data);
-        if (res.data.insertedId) {
+        console.log(data.insertedId);
+        if (data.insertedId) {
           toast.success("Blog added successfully!!");
           from.reset();
+          console.log(data.data);
         }
-        console.log(data);
       });
   };
 

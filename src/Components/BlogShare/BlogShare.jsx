@@ -76,7 +76,7 @@ const BlogShare = () => {
               </p>
 
               <div className="flex items-center gap-2 pt-[18px]">
-                {keywordsArray?.map((keyword) => (
+                {blog.keywords.split(",").map((keyword) => (
                   <h2
                     key={keyword._id}
                     className="border border-[#47545F] py-1 px-3 rounded-full text-[#47545F] text-[16px] font-jost font-normal"

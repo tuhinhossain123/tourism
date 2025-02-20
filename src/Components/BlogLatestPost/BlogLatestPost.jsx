@@ -5,9 +5,7 @@ const BlogLatestPost = () => {
   const [blogs] = useBlogs();
   const latestBlogs = blogs?.filter((blog) => blog?.category === "latest");
   const [loadMore, setLoadMore] = useState(false);
-
-  const { keywords } = latestBlogs?.[0] || {};
-  const keywordsArray = keywords?.split(",");
+  
 
   const toggleViewAll = () => {
     setLoadMore(!loadMore);
@@ -47,7 +45,7 @@ const BlogLatestPost = () => {
                   </h3>
 
                   <div className="flex items-center gap-2">
-                    {keywordsArray?.map((keyword) => (
+                    {blog?.keywords?.split(",")?.map((keyword) => (
                     <h2
                       key={keyword._id}
                       className="border border-[#47545F] py-1 px-2 lg:px-3 rounded-full text-[#47545F] text-[14px] lg:text-[16px] font-jost font-normal"
